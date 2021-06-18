@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'productos',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +120,26 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+
+    ],
+
+'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+
+   'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+
+'DEFAULT_PAGINATION_CLASS':
+'rest_framework.pagination.PageNumberPagination',
+'PAGE_SIZE': 50
+
+
+}
